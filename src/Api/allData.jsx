@@ -6,12 +6,14 @@ const bookContext = createContext();
 const BookDataProvider = ({ children }) => {
   const [book, setBook] = useState([]);
   const [category, setCategoryTo] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getBooks = async () => {
+    setLoading(true);
     const books = await client.fetch(
       "*[_type == 'books']{name, _id, author, 'imgURL': img.asset->url}"
     );
-
+    setLoading(false);
     setBook(books);
   };
   const getCategory = async () => {
@@ -52,7 +54,7 @@ const BookDataProvider = ({ children }) => {
   }, []);
   return (
     <bookContext.Provider
-      value={{ book, category, getSearchData, getSelectData }}
+      value={{ book, category, getSearchData, getSelectData, loading }}
     >
       {children}
     </bookContext.Provider>
