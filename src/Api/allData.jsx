@@ -31,7 +31,7 @@ const BookDataProvider = ({ children }) => {
 
   const processSearchData = async (data) => {
     const searchBooks = await client.fetch(
-      `*[_type == 'books' && name match "${data}*"]{author, 'imgURL': img.asset->url, name, _id}`
+      `*[_type == 'books' && name match "${data}*"]{_id, author, 'imgURL': img.asset->url, name}`
     );
     setBook(searchBooks);
   };
@@ -43,7 +43,7 @@ const BookDataProvider = ({ children }) => {
 
   const processSelectedData = async (value) => {
     const selectCategories = await client.fetch(
-      `*[_type == 'books' && category._ref in *[_type == 'categories' && cat_name == '${value}' ]._id]{author, 'imgURL': img.asset->url, name}`
+      `*[_type == 'books' && category._ref in *[_type == 'categories' && cat_name == '${value}' ]._id]{_id, author, 'imgURL': img.asset->url, name}`
     );
     setBook(selectCategories);
   };

@@ -8,8 +8,7 @@ import Loading from "../components/Loading/Loading";
 
 const BookDetails = () => {
   const { id } = useParams();
-    const [book, setBook] = useState([]);
-    const {loading}=useBookContext()
+  const [book, setBook] = useState([]);
   const getBook = async () => {
     const books = await client.fetch(
       `*[_type == 'books' && _id == '${id}']{category->{cat_name}, author, 'imgUrl': img.asset->url, name, desc}`
@@ -21,14 +20,14 @@ const BookDetails = () => {
     getBook();
   }, []);
   return (
-      <Layout title={book[0]?.name}>
-          {loading ? <Loading /> :
-              <Details
-                  img={book[0]?.imgUrl}
-                  name={book[0]?.name}
-                  author={book[0]?.author}
-                  desc={book[0]?.desc}
-                  category={book[0]?.category.cat_name} />}
+    <Layout title={book[0]?.name}>
+      <Details
+        img={book[0]?.imgUrl}
+        name={book[0]?.name}
+        author={book[0]?.author}
+        desc={book[0]?.desc}
+        category={book[0]?.category.cat_name}
+      />
     </Layout>
   );
 };
