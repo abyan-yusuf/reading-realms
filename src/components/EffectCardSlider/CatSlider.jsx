@@ -13,7 +13,7 @@ const CatSlider = () => {
       grabCursor={true}
       pagination={{ clickable: true, dynamicBullets: true }}
       modules={[EffectCards, Autoplay, Pagination]}
-      className="mySwiper w-[550px] border-2"
+      className="mySwiper border-2 w-full"
       slidesPerView={1}
       autoplay={{
         delay: 2000,
@@ -21,11 +21,11 @@ const CatSlider = () => {
       }}
     >
       {category.map((n) => (
-        <SwiperSlide key={n._id}>
+        <SwiperSlide key={n._id} className="w-full h-auto">
           <h3 className="absolute text-slate-700 font-semibold bg-slate-300 px-2 py-1 rounded-r-lg">
             {n.cat_name}
           </h3>
-          <img src={n.img} className="h-72 rounded-xl" />
+          <img src={n.img} className="rounded-xl" />
         </SwiperSlide>
       ))}
     </Swiper>

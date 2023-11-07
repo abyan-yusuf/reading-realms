@@ -7,6 +7,13 @@ const BookDataProvider = ({ children }) => {
   const [book, setBook] = useState([]);
   const [category, setCategoryTo] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [cart, addToCart] = useState([])
+
+  const moveToCart = (value) => {
+    addToCart([...cart, value])
+    console.log(cart)
+    
+  }
 
   const getBooks = async () => {
     setLoading(true);
@@ -54,7 +61,7 @@ const BookDataProvider = ({ children }) => {
   }, []);
   return (
     <bookContext.Provider
-      value={{ book, category, getSearchData, getSelectData, loading }}
+      value={{ book, category, getSearchData, getSelectData, loading, moveToCart, cart }}
     >
       {children}
     </bookContext.Provider>

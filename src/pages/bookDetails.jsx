@@ -11,7 +11,7 @@ const BookDetails = () => {
   const [book, setBook] = useState([]);
   const getBook = async () => {
     const books = await client.fetch(
-      `*[_type == 'books' && _id == '${id}']{category->{cat_name}, author, 'imgUrl': img.asset->url, name, desc}`
+      `*[_type == 'books' && _id == '${id}']{_id, category->{cat_name}, author, 'imgUrl': img.asset->url, name, desc}`
     );
 
     setBook(books);
@@ -27,6 +27,7 @@ const BookDetails = () => {
         author={book[0]?.author}
         desc={book[0]?.desc}
         category={book[0]?.category.cat_name}
+        value={book[0]}
       />
     </Layout>
   );
