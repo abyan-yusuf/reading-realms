@@ -11,13 +11,6 @@ const Cart = () => {
         <table className="table">
           <thead>
             <tr>
-              <th className="w-10"></th>
-              <th colSpan="3" className="text-center">
-                Details
-              </th>
-              <th></th>
-            </tr>
-            <tr>
               <th></th>
               <th>Name</th>
               <th>Author</th>
