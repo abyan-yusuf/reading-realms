@@ -18,9 +18,7 @@ const Cart = () => {
               <th></th>
             </tr>
             <tr>
-              <th>
-                <input type="checkbox" className="checkbox" />
-              </th>
+              <th></th>
               <th>Name</th>
               <th>Author</th>
               <th>Category</th>
@@ -61,7 +59,6 @@ const Cart = () => {
               </tr>
             ))}
           </tbody>
-          {/* foot */}
           <tfoot>
             <tr>
               <th></th>
