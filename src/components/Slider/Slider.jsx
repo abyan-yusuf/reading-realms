@@ -17,17 +17,19 @@ export default function Slider() {
           delay: 2500,
           disableOnInteraction: false,
         }}
+        centeredSlides={false}
         pagination={{
           clickable: true,
           dynamicBullets: true,
         }}
+        slidesPerView={4}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="border-2 p-10 w-[100vw]"
+        className="border-2 p-10"
       >
         {book.map((n) => (
           <SwiperSlide key={n._id}>
-            <img src={n.imgURL} className="h-96 rounded-xl border-2 w-full" />
+            <img src={n.imgURL} className="h-96 rounded-xl border-2 w-auto" />
           </SwiperSlide>
         ))}
       </Swiper>

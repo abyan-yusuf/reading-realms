@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { client } from "../lib/sanity";
+import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const bookContext = createContext();
 
@@ -11,8 +13,7 @@ const BookDataProvider = ({ children }) => {
 
   const moveToCart = (value) => {
     addToCart([...cart, value])
-    console.log(cart)
-    
+    toast.success( 'Added to Cart!', {closeButton: (<div className="flex items-center pe-5"><Link to={'/cart'} className="underline hover:no-underline">View Cart</Link></div>)})
   }
 
   const getBooks = async () => {

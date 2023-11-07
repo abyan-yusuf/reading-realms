@@ -5,18 +5,17 @@ import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { cart } = useBookContext();
-  console.log(cart);
   return (
     <Layout title="Cart">
       <div className="overflow-x-auto pt-20">
         <table className="table">
           <thead>
             <tr>
-              <th className="w-10"></th> {/* Empty cell for spacing */}
+              <th className="w-10"></th>
               <th colSpan="3" className="text-center">
                 Details
               </th>
-              <th></th> {/* Empty cell for spacing */}
+              <th></th>
             </tr>
             <tr>
               <th>
@@ -25,7 +24,7 @@ const Cart = () => {
               <th>Name</th>
               <th>Author</th>
               <th>Category</th>
-              <th></th> {/* Empty cell for spacing */}
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -66,7 +65,7 @@ const Cart = () => {
           <tfoot>
             <tr>
               <th></th>
-              <th colSpan="3"></th> {/* Empty cell to match header layout */}
+              <th colSpan="3"></th>
               <th></th>
             </tr>
           </tfoot>
