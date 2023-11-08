@@ -5,10 +5,9 @@ import { useBookContext } from "../../Api/allData";
 
 const Details = ({ name, img, author, category, desc, value }) => {
   const { loading, moveToCart } = useBookContext();
-    return (
-    loading? <Loading/>:
-    <div className="card h-1/6 w-full md:card-side bg-base-100 shadow-xl pt-20 pb-10">
-      <figure className="rounded-xl pl-5 w-1/3 w-96">
+    return (<div className="pt-20 pb-10 flex justify-center">{loading? <Loading/>:
+    <div className="card h-1/6 w-full md:card-side bg-base-100 shadow-xl">
+      <figure className="rounded-xl pl-5 w-96">
         <img
           src={img}
           className="rounded-2xl h-full min-w-full w-full border border-slate-600"
@@ -28,7 +27,8 @@ const Details = ({ name, img, author, category, desc, value }) => {
           </button>
         </div>
       </div>
-    </div>
+    </div>}</div>
+    
   );
 };
 

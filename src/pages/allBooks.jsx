@@ -9,7 +9,7 @@ const AllBooks = () => {
     useBookContext();
   console.log(loading);
   return (
-    <Layout title="All Books">
+    <Layout title="All Books | Reading Realms">
       <section className="pb-10 pt-24">
         <div className="flex justify-center pb-10">
           <input

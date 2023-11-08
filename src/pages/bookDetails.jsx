@@ -20,7 +20,7 @@ const BookDetails = () => {
     getBook();
   }, []);
   return (
-    <Layout title={book[0]?.name}>
+    <Layout title={book[0]?.name + ' | Reading Realms'}>
       <Details
         img={book[0]?.imgUrl}
         name={book[0]?.name}
