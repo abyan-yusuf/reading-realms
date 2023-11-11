@@ -9,17 +9,41 @@ const BookDataProvider = ({ children }) => {
   const [book, setBook] = useState([]);
   const [category, setCategoryTo] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [cart, addToCart] = useState([])
+  const [cart, addToCart] = useState([]);
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 4;
+  const [lastPage, setLastPage] = useState(false)
+  const maxPage = book.length / itemsPerPage
+
+  const previous = () => {
+    console.log("previous");
+    setPage(page - 1);
+  };
+  const next = () => {
+    console.log("next");
+    setPage(page + 1);
+  };
 
   const moveToCart = (value) => {
-    addToCart([...cart, value])
-    toast.success( 'Added to Cart!', {closeButton: (<div className="flex items-center pe-5"><Link to={'/cart'} className="underline hover:no-underline">View Cart</Link></div>)})
-  }
+    addToCart([...cart, value]);
+    toast.success("Added to Cart!", {
+      closeButton: (
+        <div className="flex items-center pe-5">
+          <Link to={"/cart"} className="underline hover:no-underline">
+            View Cart
+          </Link>
+        </div>
+      ),
+    });
+  };
 
   const getBooks = async () => {
     setLoading(true);
+    const offset = (page - 1) * itemsPerPage;
     const books = await client.fetch(
-      "*[_type == 'books']{name, _id, author, 'imgURL': img.asset->url}"
+      `*[_type == 'books']{name, _id, author, 'imgURL': img.asset->url}[${offset}...${
+        offset + itemsPerPage
+      }]`
     );
     setLoading(false);
     setBook(books);
@@ -30,6 +54,7 @@ const BookDataProvider = ({ children }) => {
     );
 
     setCategoryTo(category);
+    setLastPage(page == maxPage)
   };
 
   const getSearchData = (value) => {
@@ -59,10 +84,22 @@ const BookDataProvider = ({ children }) => {
   useEffect(() => {
     getBooks();
     getCategory();
-  }, []);
+  }, [page]);
   return (
     <bookContext.Provider
-      value={{ book, category, getSearchData, getSelectData, loading, moveToCart, cart }}
+      value={{
+        book,
+        category,
+        getSearchData,
+        getSelectData,
+        loading,
+        moveToCart,
+        cart,
+        previous,
+        next,
+        page, 
+        lastPage
+      }}
     >
       {children}
     </bookContext.Provider>

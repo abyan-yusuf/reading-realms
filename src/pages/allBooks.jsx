@@ -5,9 +5,17 @@ import Book from "../components/Books/Books";
 import Loading from "../components/Loading/Loading";
 
 const AllBooks = () => {
-  const { book, getSearchData, category, getSelectData, loading } =
-    useBookContext();
-  console.log(loading);
+  const {
+    book,
+    getSearchData,
+    category,
+    getSelectData,
+    loading,
+    previous,
+    next,
+    page,
+    lastPage
+  } = useBookContext();
   return (
     <Layout title="All Books | Reading Realms">
       <section className="pb-10 pt-24">
@@ -52,6 +60,14 @@ const AllBooks = () => {
               />
             ))
           )}
+        </div>
+        <div className="flex justify-between mx-10">
+          <button className="btn" onClick={previous} disabled={page == 1}>
+            PREVIOUS
+          </button>
+          <button className="btn" onClick={next} disabled={lastPage}>
+            NEXT
+          </button>
         </div>
       </section>
     </Layout>

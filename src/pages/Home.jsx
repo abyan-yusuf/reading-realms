@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const { book } = useBookContext();
-  const bookModified = book.slice(8);
   return (
     <Layout title="Reading Realms | Explore endless worlds">
       <section className="py-10">
@@ -25,7 +24,7 @@ const Home = () => {
           Recent Books
         </h1>
         <div className="flex flex-wrap justify-between px-10">
-          {bookModified.map((n) => (
+          {book.map((n) => (
             <Book link={n._id} img={n.imgURL} title={n.name} author={n.author} key={n._id} />
           ))}
         </div>

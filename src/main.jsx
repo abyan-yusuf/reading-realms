@@ -6,11 +6,9 @@ import "./index.css";
 import BookDataProvider from "./Api/allData.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
     <BookDataProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </BookDataProvider>
-  </React.StrictMode>
 );
