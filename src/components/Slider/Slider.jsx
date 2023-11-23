@@ -30,9 +30,7 @@ export default function Slider() {
       >
         {book.map((n) => (
           <SwiperSlide key={n._id}>
-            <Link to={`books/${n._id}`}>
               <img src={n.imgURL} className="h-96 rounded-xl border-2 w-auto" />
-            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

@@ -12,7 +12,7 @@ const Layout = ({ children, title }) => {
           <header>
               <Navbar />
           </header>
-          <main className="pb-10 w-full">
+          <main className="pb-10 w-full min-h-screen">
               {children}
           </main>
           <footer>
